@@ -95,6 +95,9 @@
         footer p {
             font-size: 14px;
         }
+        .no-underline {
+    text-decoration: none;
+}
     </style>
 </head>
 <body>
@@ -135,13 +138,16 @@
                 <p>Effortlessly prescribe medications and treatments for patients using our intuitive system.</p>
             </div>
             <div class="feature-item">
+               
                 <h3>Get Admitted</h3>
                 <p>Seamless admission process with dedicated staff to assist patients throughout their stay.</p>
             </div>
-            <div class="feature-item">
-                <h3>Pay Bill</h3>
-                <p>Convenient online payment options available for hassle-free bill settlement.</p>
-            </div>
+            <a href="{% url 'select_payment_method' %}" class="no-underline">
+                <div class="feature-item">
+                    <h3>Pay Bill</h3>
+                    <p>Convenient online payment options available for hassle-free bill settlement.</p>
+                </div>
+            </a>
         </div>
     </section>
     <footer>
