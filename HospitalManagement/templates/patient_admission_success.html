@@ -11,6 +11,7 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: #f4f4f4;
             margin: 20px;
+            align-content: center;
         }
 
         h2 {
@@ -27,23 +28,40 @@
             display: block;
             margin: 20px auto;
             text-align: center;
+            font-size: 48px; /* Adjust the size as needed */
+            color: #4caf50; /* Green color */
+        }
+        .back-to-home {
+            text-align: center;
+            margin-top: 20px;
         }
 
-        .success-icon img {
-            width: 80px;
-            height: 80px;
+        .back-to-home a {
+            color: #007BFF; /* Blue color */
+            text-decoration: none;
+            font-weight: bold;
+            display: inline-block; /* Align as a block-level element */
+        }
+
+        .back-to-home a:hover {
+            text-decoration: underline;
         }
     </style>
+     
 </head>
 <body>
 
     <h2>Patient Admission Successful</h2>
 
     <div class="success-icon">
-        <img src="E:\4-2\SQA\SQA Project\SQA-Project\HospitalManagement\static\icons\success_icon.png" alt="Success Icon">
+        &#10004;
     </div>
 
     <p>Thank you for submitting the admission form. The admission process was successful!</p>
+
+    <div class="back-to-home">
+        <a href="{% url 'home' %}" style="text-decoration: none">Back to Home Page</a>
+    </div>
 
 </body>
 </html>

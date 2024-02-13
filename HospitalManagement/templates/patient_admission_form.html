@@ -76,8 +76,8 @@
 
     <h2>Patient Admission Form</h2>
 
-    <form method="post" action="">
-        
+    <form method="post" action="{% url 'savePatientData' %}">
+        {%csrf_token%}
 
         <label for="name">Name:</label>
         <input type="text" id="name" name="name" required>
@@ -92,11 +92,11 @@
             
         </select>
 
-        <label for="admission_date">Admission Date:</label>
-        <input type="date" id="admission_date" name="admission_date" required>
+        <label for="admissionDate">Admission Date:</label>
+        <input type="date" id="admissionDate" name="admissionDate" required>
 
-        <label for="contact_number">Contact Number:</label>
-        <input type="tel" id="contact_number" name="contact_number" required>
+        <label for="contact">Contact Number:</label>
+        <input type="tel" id="contact" name="contact" required>
 
         <label for="address">Address:</label>
         <textarea id="address" name="address" rows="4" required></textarea>
