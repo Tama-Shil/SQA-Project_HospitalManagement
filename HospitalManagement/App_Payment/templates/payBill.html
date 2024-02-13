@@ -66,7 +66,10 @@
     <form method="post" action="">
         {% csrf_token %}
         {{ form.as_p }}
-        <button type="submit">Submit Payment</button>
+    <form method="get" accept="#" class="btn-form">
+        <button type="submit">Pay via bikash</button>
+
+    </form>
     </form>
 </div>
 

@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import advancePayment, payment_success, selectPaymentMethod,  emiPayment
+from .views import advancePayment, selectPaymentMethod,  emiPayment
 
 urlpatterns = [
     path('', selectPaymentMethod, name='select_payment_method'),
