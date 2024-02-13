@@ -1,1 +1,81 @@
-<H1>This is bed allocation function</H1>
+<!-- home.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hospital Management System</title>
+    <style>
+        /* CSS styles */
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .heading {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+        .list-container {
+            margin-bottom: 20px;
+        }
+        .list-container h2 {
+            font-size: 20px;
+            margin-bottom: 5px;
+        }
+        .list {
+            list-style-type: none;
+            padding: 0;
+        }
+        .list-item {
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            padding: 10px;
+        }
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            text-decoration: none;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="heading">Hospital Management System</h1>
+        
+        <div class="list-container">
+            <h2>Beds</h2>
+            <ul class="list">
+                {% for bed in all_beds %}
+                <li class="list-item">Bed Number: {{ bed.bed_number }} - Type: {{ bed.bed_type }} {% if bed.is_occupied %}(Occupied){% else %}(Available){% endif %}</li>
+                {% endfor %}
+            </ul>
+        </div>
+        
+        <div class="list-container">
+            <h2>Patients</h2>
+            <ul class="list">
+                {% for patient in all_patients %}
+                <li class="list-item">Patient: {{ patient.first_name }} {{ patient.last_name }}- Status: {{ patient.status }} - Assigned Bed: {{ patient.assigned_bed }} {% if not patient.assigned_bed %}(Not Admitted){% endif %}</li>
+                {% endfor %}
+            </ul>
+        </div>
+        
+        <a href="{% url 'add_bed' %}" class="button">Add Bed</a>
+        <a href="{% url 'add_patient' %}" class="button">Add Patient</a>
+    </div>
+</body>
+</html>
