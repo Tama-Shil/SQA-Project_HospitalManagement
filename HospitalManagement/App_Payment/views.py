@@ -1,17 +1,21 @@
 from django.shortcuts import render, redirect
 from .forms import advancePaymentForm,  emiPaymentForm
-from .models import PaymentModel
+from .models import Patient, PaymentModel
+
 
 def selectPaymentMethod(request):
   
-    if request.method == 'POST':
-        selectedMethod = request.POST.get('payment_method')
-        if selectedMethod  == 'advance':
-            return redirect('advance_payment_form')
-        elif selectedMethod  == 'emi':
-            return redirect('emi_payment_form')
+  if request.method == 'POST':
+        patient_id = request.POST.get('patient_id')
+        patient_name = request.POST.get('patient_name')
+        cabin = 0
 
-    return render(request, 'selectPaymentMethod.html')
+        # Save the patient data to the database
+        patient = Patient.objects.create(patient_id=patient_id, patient_name=patient_name,cabin_number=0,reports_bill=0, medicine_bill=0, cabin_bill=0, total_bill=0 )
+
+        # Render a page with patient details
+        return render(request, 'payment_success.html', {'patient': patient})
+  return render(request, 'selectPaymentMethod.html')
 
 def advancePayment(request):
 

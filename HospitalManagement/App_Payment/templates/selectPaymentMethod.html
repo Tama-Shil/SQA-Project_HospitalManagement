@@ -18,6 +18,7 @@
             background-color: #fff;
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center; /* Center align contents */
         }
         label {
             display: block;
@@ -35,9 +36,20 @@
             border-radius: 5px;
             cursor: pointer;
             transition: background-color 0.3s;
+            margin: 0 auto; /* Center horizontally */
+            display: block; /* Make the button a block element */
         }
         input[type="submit"]:hover {
             background-color: #0056b3;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 8px;
+            margin-top: 6px;
+            margin-bottom: 16px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
         }
     </style>
 </head>
@@ -46,10 +58,13 @@
 <div class="container">
     <form action="{% url 'select_payment_method' %}" method="post">
         {% csrf_token %}
-        <label>Select Payment Method:</label><br>
-        <input type="radio" name="payment_method" value="advance"> Pay All now<br>
-        <input type="radio" name="payment_method" value="emi"> EMI Payment<br>
-        <input type="submit" value="Select">
+        <label for="patient_id">Patient ID:</label>
+        <input type="text" id="patient_id" name="patient_id">
+
+        <label for="patient_name">Patient Name:</label>
+        <input type="text" id="patient_name" name="patient_name">
+
+        <input type="submit" value="Submit">
     </form>
 
 </div>
