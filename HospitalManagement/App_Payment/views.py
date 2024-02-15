@@ -1,5 +1,5 @@
 """
-Django Views
+Django View
 -------------
 
 This module defines Django Views for App_Payment.
@@ -34,7 +34,7 @@ def selectPaymentMethod(request):
 
 
 
-def payment_success(request):
+def paymentSuccess(request):
     """
     View for displaying payment success.
 
