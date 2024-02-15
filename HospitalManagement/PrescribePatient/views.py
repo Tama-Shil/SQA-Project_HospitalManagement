@@ -2,6 +2,13 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from reportlab.pdfgen import canvas
 
+import random
+
+from reportlab.lib import colors
+from reportlab.lib.pagesizes import letter
+from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer
+from reportlab.lib.styles import getSampleStyleSheet
+
 def prescribePatient(request):
     if request.method == 'POST':
         # Get form data
@@ -12,18 +19,39 @@ def prescribePatient(request):
         diagnosis = request.POST.get('diagnosis', '')
         prescription = request.POST.get('prescription', '')
 
-        # Generate PDF content using reportlab
+        # Generate PDF content using ReportLab
         response = HttpResponse(content_type='application/pdf')
         response['Content-Disposition'] = 'attachment; filename="prescription.pdf"'
-        p = canvas.Canvas(response)
-        p.setFont("Helvetica", 12)
-        p.drawString(100, 800, "Patient Name: " + patient_name)
-        p.drawString(100, 780, "Age: " + age)
-        p.drawString(100, 760, "Gender: " + gender)
-        p.drawString(100, 740, "Symptoms: " + symptoms)
-        p.drawString(100, 720, "Diagnosis: " + diagnosis)
-        p.drawString(100, 700, "Prescription: " + prescription)
-        p.save()
+
+        doc = SimpleDocTemplate(response, pagesize=letter)
+        styles = getSampleStyleSheet()
+        style_normal = styles['Normal']
+        style_heading = styles['Heading1']
+        style_heading.alignment = 1  # Center alignment for heading
+
+        content = []
+
+        # Add heading with orange color
+        orange_color = colors.HexColor('#FFA500')
+        content.append(Paragraph("<font color='#FFA500'><b>Prescription</b></font>", style_heading))
+        content.append(Spacer(1, 12))
+
+        # Add patient information with orange color
+        content.append(Paragraph("<font color='#FFA500'>Patient Name:</font> " + patient_name, style_normal))
+        content.append(Paragraph("<font color='#FFA500'>Age:</font> " + age, style_normal))
+        content.append(Paragraph("<font color='#FFA500'>Gender:</font> " + gender, style_normal))
+        content.append(Spacer(1, 12))
+
+        # Add symptoms, diagnosis, and prescription with orange color
+        content.append(Paragraph("<font color='#FFA500'><b>Symptoms:</b></font>", style_normal))
+        content.append(Paragraph(symptoms, style_normal))
+        content.append(Paragraph("<font color='#FFA500'><b>Diagnosis:</b></font>", style_normal))
+        content.append(Paragraph(diagnosis, style_normal))
+        content.append(Paragraph("<font color='#FFA500'><b>Prescription:</b></font>", style_normal))
+        content.append(Paragraph(prescription, style_normal))
+
+        doc.build(content)
+        
         return response
     else:
         return render(request, 'PrescribePatient/prescription_form.html')

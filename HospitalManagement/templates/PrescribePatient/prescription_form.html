@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Prescribe Patient - Hospital Management System</title>
+    <title>Prescribe Patient</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -59,12 +59,31 @@
             margin-top: 20px;
             border-radius: 4px;
         }
+        /* Styling for back button */
+        .back-button {
+            display: inline-block;
+            background-color: #333;
+            color: #fff;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+        .back-button:hover {
+            background-color: #555;
+        }
+        /* Centering the prescribe button */
+        .center-button {
+            text-align: center;
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>Prescribe Patient - Hospital Management System</h1>
-        <form id="prescribeForm" method="POST" action="{% url 'prescribePatient' %}">
+
+        <form method="post" action="{% url 'prescribePatient' %}">
+            {% csrf_token %}
             <label for="patientName">Patient Name:</label>
             <input type="text" id="patientName" name="patientName" placeholder="Enter patient's name" required>
         
@@ -87,7 +106,9 @@
             <label for="prescription">Prescription:</label>
             <textarea id="prescription" name="prescription" rows="4" placeholder="Enter prescription details"></textarea>
         
-            <input type="submit" value="Prescribe">
+            <div class="center-button">
+                <input type="submit" value="Prescribe">
+            </div>
         </form>
         
         <div class="success-msg" id="successMessage">Prescription successfully added!</div>
