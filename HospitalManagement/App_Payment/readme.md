@@ -1,1 +1,0 @@
-Here i have used a paypal personal and business account
