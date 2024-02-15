@@ -95,6 +95,19 @@
         footer p {
             font-size: 14px;
         }
+        .features .feature-item a {
+            text-decoration: none; /* Remove underlines from hyperlinks */
+            color: #333; /* Default text color */
+            transition: color 0.3s ease; /* Smooth transition for color change */
+        }
+        
+        .features .feature-item a:hover {
+            color: #555; /* Darken text color on hover */
+            background-color: #363131; /* Add a subtle background color on hover */
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); /* Add a subtle box shadow on hover */
+        }
+        
+        
     </style>
 </head>
 <body>
@@ -131,7 +144,7 @@
                 <p>Emergency ambulance services available 24/7 to transport patients safely to the hospital.</p>
             </div>
             <div class="feature-item">
-                <h3>Prescribe Patient</h3>
+                <a href="{% url 'prescribePatient' %}"> <h3>Prescribe Patient</h3> </a>
                 <p>Effortlessly prescribe medications and treatments for patients using our intuitive system.</p>
             </div>
             <div class="feature-item">
