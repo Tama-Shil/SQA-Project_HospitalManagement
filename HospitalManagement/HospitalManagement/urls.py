@@ -5,7 +5,11 @@ from . import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',views.home, name='home'),
+    # Admin interface URL
+    
+    path('', views.home, name='home'),
+    # Home page URL
+    
     path('admission/', include("getAdmitted.urls"))
+    # Include URLs from the 'getAdmitted' app under the 'admission/' path
 ]
-

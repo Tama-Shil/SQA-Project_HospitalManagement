@@ -1,10 +1,16 @@
+# urls.py
+
 from django.contrib import admin
-from django.urls import path,include
+from django.urls import path, include
 from . import views
 
 urlpatterns = [
-    path('',views.form_page,name='form_page'),
-    path('savePatientData/', views.savePatientData, name = 'savePatientData'),
-    path('patient_admission_success/', views.patient_admission_success, name='patient_admission_success')
-]
+    path('', views.formPage, name='formPage'),  
+    # URL for displaying the patient admission form
 
+    path('savePatientData/', views.savePatientData, name='savePatientData'),  
+    # URL for handling the form submission and saving patient data
+
+    path('patientAdmissionSuccess/', views.patientAdmissionSuccess, name='patientAdmissionSuccess'),  
+    # URL for displaying a success page after successful patient admission
+]

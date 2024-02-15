@@ -1,5 +1,11 @@
+# views.py
+
 from django.shortcuts import render
+
 def home(request):
-    return render(request,'homepage.html')
+    """
+    Render the home page.
 
-
+    Displays the 'homepage.html' template to provide the home page content.
+    """
+    return render(request, 'homepage.html')

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,20 +10,20 @@
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f4f4f4;
+            background-color: #fff; /* White background */
             margin: 20px;
         }
 
         h2 {
-            color: #333;
+            color: #ff5722; /* Orange color */
             text-align: center;
         }
 
         form {
-            max-width: 500px;
+            max-width: 600px; /* Increased max-width */
             margin: 20px auto;
             padding: 20px;
-            background-color: #e0f7fa; /* Light blue color */
+            background-color: #f7ebeb; /* White color */
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
@@ -45,7 +46,7 @@
         }
 
         button {
-            background-color: #4caf50;
+            background-color: #ff5722;
             color: #fff;
             padding: 12px 20px;
             border: none;
@@ -72,12 +73,13 @@
         }
     </style>
 </head>
+
 <body>
 
-    <h2>Patient Admission Form</h2>
-
     <form method="post" action="{% url 'savePatientData' %}">
-        {%csrf_token%}
+        
+
+        <h2>Patient Admission Form</h2> <!-- Title included in the form -->
 
         <label for="name">Name:</label>
         <input type="text" id="name" name="name" required>
@@ -89,7 +91,6 @@
         <select id="gender" name="gender" required>
             <option value="male">Male</option>
             <option value="female">Female</option>
-            
         </select>
 
         <label for="admissionDate">Admission Date:</label>
@@ -104,10 +105,9 @@
         <label for="symptoms">Symptoms:</label>
         <textarea id="symptoms" name="symptoms" rows="4" required></textarea>
 
-        
-
         <button type="submit">Submit</button>
     </form>
 
 </body>
+
 </html>
