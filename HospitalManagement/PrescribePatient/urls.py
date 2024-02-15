@@ -1,9 +1,13 @@
+"""
+Module: urls
 
-from django.contrib import admin
-from django.urls import path,include
+This module defines URL patterns for the PrescribePatient app.
+
+"""
+
+from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('',views.prescribePatient,name='prescribePatient')
+    path('', views.prescribePatient, name='prescribePatient')
 ]
-

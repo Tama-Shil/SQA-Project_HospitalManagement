@@ -1,18 +1,29 @@
+"""
+Module: prescribe_patient
+
+This module contains a Django view function to prescribe 
+medication and generate a PDF prescription based on form data.
+
+"""
 from django.shortcuts import render
 from django.http import HttpResponse
-from reportlab.pdfgen import canvas
-
-import random
-
-from reportlab.lib import colors
 from reportlab.lib.pagesizes import letter
 from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer
 from reportlab.lib.styles import getSampleStyleSheet
 
 def prescribePatient(request):
+    """
+    Generates a PDF prescription based on form data.
+
+    Args:
+        request: HttpRequest object containing form data.
+
+    Returns:
+        HttpResponse: PDF response with prescription.
+    """
     if request.method == 'POST':
         # Get form data
-        patient_name = request.POST.get('patientName', '')
+        patientName = request.POST.get('patientName', '')
         age = request.POST.get('age', '')
         gender = request.POST.get('gender', '')
         symptoms = request.POST.get('symptoms', '')
@@ -32,12 +43,13 @@ def prescribePatient(request):
         content = []
 
         # Add heading with orange color
-        orange_color = colors.HexColor('#FFA500')
         content.append(Paragraph("<font color='#FFA500'><b>Prescription</b></font>", style_heading))
         content.append(Spacer(1, 12))
 
         # Add patient information with orange color
-        content.append(Paragraph("<font color='#FFA500'>Patient Name:</font> " + patient_name, style_normal))
+        content.append(
+        Paragraph("<font color='#FFA500'>Patient Name:</font> " + patientName, style_normal))
+
         content.append(Paragraph("<font color='#FFA500'>Age:</font> " + age, style_normal))
         content.append(Paragraph("<font color='#FFA500'>Gender:</font> " + gender, style_normal))
         content.append(Spacer(1, 12))
@@ -51,7 +63,5 @@ def prescribePatient(request):
         content.append(Paragraph(prescription, style_normal))
 
         doc.build(content)
-        
         return response
-    else:
-        return render(request, 'PrescribePatient/prescription_form.html')
+    return render(request, 'PrescribePatient/prescription_form.html')
