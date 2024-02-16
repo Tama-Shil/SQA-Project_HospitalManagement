@@ -7,7 +7,7 @@ class HospitalModelTest(TestCase):
     """
     Test cases for the Hospital model.
     """
-    def test_str_representation(self):
+    def test_str_representation(self): 
         """
         Test the string representation of the Hospital model.
         """
@@ -16,7 +16,7 @@ class HospitalModelTest(TestCase):
 
 class PatientModelTest(TestCase):
     """
-    Test cases for the Patient model.
+    Test cases for the Patient model
     """
     def test_str_representation(self):
         """
@@ -65,7 +65,7 @@ class AmbulanceCallFormViewTest(TestCase):
         """
         hospital = Hospital.objects.create(name='Test Hospital')
         patient = Patient.objects.create(name='Test Patient')
-        data = {
+        data ={
             'patient_name': 'Test Patient',
             'hospital': hospital.id,
             'phone_number': '1234567890',
