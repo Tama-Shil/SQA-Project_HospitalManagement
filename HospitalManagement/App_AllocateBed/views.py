@@ -49,9 +49,10 @@ def add_patient(request):
     """
     frm = PatientForm()
 
-    if request.method=='POST':
+    if request.method == 'POST':
         frm = PatientForm(request.POST)
-        frm.save()
-        return redirect(home)
+        if frm.is_valid():
+            patient = frm.save()  # Save the form and capture the patient instance
+            return redirect('home')  # Redirect to 'home' URL after successfully saving the form
     
     return render(request, "add_patient.html", {'form': frm})
