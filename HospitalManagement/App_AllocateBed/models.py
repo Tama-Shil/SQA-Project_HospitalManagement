@@ -8,12 +8,12 @@ class Bed(models.Model):
         ('intensive_care', 'Intensive Care'),
     )
     
-    bed_number = models.CharField(max_length=20)
-    bed_type = models.CharField(max_length=20, choices=BED_TYPES)
-    is_occupied = models.BooleanField(default=False)
+    bedNumber = models.CharField(max_length=20)
+    bedType = models.CharField(max_length=20, choices=BED_TYPES)
+    isOccupied = models.BooleanField(default=False)
     
     def __str__(self):
-        return self.bed_number
+        return self.bedNumber
     
 
 class Patient(models.Model):
@@ -23,12 +23,12 @@ class Patient(models.Model):
         ('other', 'Other'),
     )
 
-    first_name = models.CharField(max_length=100)
-    last_name = models.CharField(max_length=100)
+    firstName = models.CharField(max_length=100)
+    lastName = models.CharField(max_length=100)
     age = models.PositiveSmallIntegerField()
     gender = models.CharField(max_length=20, choices=GENDER_TYPES)
-    assigned_bed = models.ForeignKey(Bed, on_delete=models.SET_NULL, null=True, blank=True)
+    assignedBed = models.ForeignKey(Bed, on_delete=models.SET_NULL, null=True, blank=True)
     status = models.CharField(max_length=20, default='Admitted')
 
     def __str__(self):
-        return self.first_name + " " + self.last_name
+        return self.firstName + " " + self.lastName

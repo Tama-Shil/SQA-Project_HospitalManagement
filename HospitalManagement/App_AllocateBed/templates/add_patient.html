@@ -49,11 +49,11 @@
     <h1>Add Bed</h1>
     <form action="" method="POST">
         {% csrf_token %}
-        <p>Enter First Name: {{ form.first_name }}</p>
-        <p>Enter Last Name: {{ form.last_name }}</p>
+        <p>Enter First Name: {{ form.firstName }}</p>
+        <p>Enter Last Name: {{ form.lastName }}</p>
         <p>Enter Age: {{ form.age }}</p>
         <p>Enter Gender: {{ form.gender }}</p>
-        <p>Enter Assigned Bed: {{ form.assigned_bed }}</p>
+        <p>Enter Assigned Bed: {{ form.assignedBed }}</p>
         <p>Enter Status: {{ form.status }}</p>
         <input type="submit" value="SAVE">
     </form>

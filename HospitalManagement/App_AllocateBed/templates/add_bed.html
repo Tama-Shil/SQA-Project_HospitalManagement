@@ -49,9 +49,9 @@
     <h1>Add Bed</h1>
     <form action="" method="POST">
         {% csrf_token %}
-        <p>Enter Bed Number: {{ form.bed_number }}</p>
-        <p>Enter Bed Type: {{ form.bed_type }}</p>
-        <p>Is Occupied: {{ form.is_occupied }}</p>
+        <p>Enter Bed Number: {{ form.bedNumber }}</p>
+        <p>Enter Bed Type: {{ form.bedType }}</p>
+        <p>Is Occupied: {{ form.isOccupied }}</p>
         <input type="submit" value="SAVE">
     </form>
 </body>
