@@ -106,10 +106,18 @@
             <label for="prescription">Prescription:</label>
             <textarea id="prescription" name="prescription" rows="4" placeholder="Enter prescription details"></textarea>
         
+            <!-- Doctor information -->
+            <label for="doctorName">Doctor Name:</label>
+            <input type="text" id="doctorName" name="doctorName" placeholder="Enter doctor's name" required>
+        
+            <label for="specialization">Specialization:</label>
+            <input type="text" id="specialization" name="specialization" placeholder="Enter doctor's specialization" required>
+        
             <div class="center-button">
                 <input type="submit" value="Prescribe">
             </div>
         </form>
+        
         
         <div class="success-msg" id="successMessage">Prescription successfully added!</div>
         <a href="{% url 'home' %}" onclick="history.back(); return false;" class="back-button">Back</a>
