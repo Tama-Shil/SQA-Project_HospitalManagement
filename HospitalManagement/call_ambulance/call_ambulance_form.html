@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Call Ambulance</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            margin-bottom: 8px;
+        }
+
+        input, select {
+            padding: 10px;
+            margin-bottom: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            background-color: #4caf50;
+            color: #fff;
+            padding: 12px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Call Ambulance</h2>
+
+    <form method="post" action="{% url 'call_ambulance:dispatch' %}">
+        {% csrf_token %}
+        
+        <label for="patient_name">Patient Name:</label>
+        <input type="text" id="patient_name" name="patient_name" required>
+
+        <label for="hospital">Select Hospital:</label>
+        <select id="hospital" name="hospital" required>
+            <option value="" disabled selected>Select a hospital</option>
+            {% for hospital in hospitals %}
+                <option value="1">Our Hospital</option>
+            {% endfor %}
+        </select>
+
+        <label for="phone_number">Your Phone Number:</label>
+        <input type="tel" id="phone_number" name="phone_number" required>
+
+        <button type="submit">Dispatch Ambulance</button>
+    </form>
+</div>
+
+</body>
+</html>
