@@ -41,7 +41,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'App_Payment'
+    'App_Payment',
+    'App_DischargePatient'
 ]
 
 MIDDLEWARE = [
