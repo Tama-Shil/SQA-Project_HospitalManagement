@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conduct Medical Test</title>
+    <style>
+        /* Internal CSS styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #ff7f00; /* Orange color */
+            text-align: center;
+        }
+        form {
+            margin-top: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #333; /* Dark text color */
+        }
+        input[type="checkbox"] {
+            margin-right: 5px;
+        }
+        button[type="submit"] {
+            padding: 10px 20px;
+            background-color: #ff7f00; /* Orange color */
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button[type="submit"]:hover {
+            background-color: #ff9933; /* Lighter shade of orange on hover */
+        }
+        .error-message {
+            color: #ff0000;
+            margin-top: 10px;
+        }
+        .success-message {
+            color: #008000;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Conduct Medical Test</h1>
+        <form method="post">
+            {% csrf_token %}
+            <!-- Display patient information -->
+            <label for="patient-info">Patient Information:</label>
+            <textarea id="patient-info" rows="4" cols="50" readonly>{{ patient_info }}</textarea>
+            <br>
+
+            <!-- Display available medical tests -->
+            <label>Select Medical Tests:</label>
+            {% for test in medical_tests %}
+                <input type="checkbox" name="medical_tests" value="{{ test.id }}">{{ test.name }}<br>
+            {% endfor %}
+            <br>
+            <button type="submit">Order Medical Tests</button>
+        </form>
+        {% if error_message %}
+            <p class="error-message">{{ error_message }}</p>
+        {% endif %}
+        {% if success_message %}
+            <p class="success-message">{{ success_message }}</p>
+        {% endif %}
+    </div>
+</body>
+</html>
