@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hospital Management System</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <style>
         /* Reset CSS */
         * {
@@ -65,6 +66,9 @@
         }
 
         .feature-item {
+            width: 80%;
+            margin: 0 auto;
+            max-width: 400px;
             padding: 20px;
             margin-bottom: 30px;
             background-color: #fff;
@@ -83,6 +87,21 @@
             color: #666;
         }
 
+        
+    
+        .feature-item h3 {
+            font-size: 20px;
+        }
+    
+        .feature-item p {
+            font-size: 14px;
+        }
+
+        @media (min-width: 992px) {
+            .feature-item {
+                width: 80%;
+            }
+        }
         /* Footer Styles */
         footer {
             background-color: #333;
@@ -95,19 +114,6 @@
         footer p {
             font-size: 14px;
         }
-        .features .feature-item a {
-            text-decoration: none; /* Remove underlines from hyperlinks */
-            color: #333; /* Default text color */
-            transition: color 0.3s ease; /* Smooth transition for color change */
-        }
-        
-        .features .feature-item a:hover {
-            color: #555; /* Darken text color on hover */
-            background-color: #363131; /* Add a subtle background color on hover */
-            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); /* Add a subtle box shadow on hover */
-        }
-        
-        
     </style>
 </head>
 <body>
@@ -126,12 +132,7 @@
             </nav>
         </div>
     </header>
-    <section class="banner">
-        <div class="container">
-            <h2>Welcome to Our Hospital</h2>
-            <p>Providing Quality Healthcare Services</p>
-        </div>
-    </section>
+    
     <section class="features">
         <div class="container">
             <h2>Hospital Features</h2>
@@ -144,7 +145,7 @@
                 <p>Emergency ambulance services available 24/7 to transport patients safely to the hospital.</p>
             </div>
             <div class="feature-item">
-                <a href="{% url 'prescribePatient' %}"> <h3>Prescribe Patient</h3> </a>
+                <h3>Prescribe Patient</h3>
                 <p>Effortlessly prescribe medications and treatments for patients using our intuitive system.</p>
             </div>
             <div class="feature-item">
