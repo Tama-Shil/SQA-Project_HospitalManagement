@@ -13,37 +13,44 @@
         }
 
         .container {
-            max-width: 600px;
+            max-width: 400px; /* Adjust the max-width to your desired value */
             margin: 20px auto; /* Center the container */
-            background-color: rgb(252, 233, 228); /* Set container background color */
+            background-color: #f7ebeb; /* Set container background color */
             padding: 20px;
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add a subtle box shadow */
         }
 
         h2 {
-            color: rgb(205, 100, 35); /* Set the color to orange */
+            color: #ff5722; /* Set the color to orange */
             text-align: center; /* Center align the heading */
         }
 
         form {
-            max-width: 400px;
+            max-width: 600px; /* Increased max-width */
             margin: auto;
+            padding: 20px;
+            background-color: #f7ebeb; /* White color */
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
 
-        label {
+        form label {
             display: block;
             margin-bottom: 8px;
+            color: #555;
         }
 
-        input, select {
+        form input,
+        form select,
+        form button {
             width: 100%;
-            padding: 8px;
+            padding: 10px;
             margin-bottom: 12px;
             box-sizing: border-box;
         }
 
-        button {
+        form button {
             background-color: #d46926;
             color: white;
             padding: 10px 15px;
@@ -52,17 +59,15 @@
             cursor: pointer;
         }
 
-        button:hover {
+        form button:hover {
             background-color: #d46926;
         }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <h2>Collect Report</h2>
-
         <form action="/submit_report" method="post">
+            <h2>Collect Report</h2>
             <label for="patientId">Patient ID:</label>
             <input type="text" id="patientId" name="patientId" required>
 
@@ -93,9 +98,9 @@
                 <label for="urineAnalysis">Urine Analysis</label>
             </div>
 
-            <button type="submit">Submit Report</button>
+            <button type="submit">Submit</button>
         </form>
-    </div>
+   
 
 </body>
 </html>
