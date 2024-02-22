@@ -11,4 +11,6 @@ from .views import selectPaymentMethod,paymentSuccess
 urlpatterns = [
     path('', selectPaymentMethod, name='select_payment_method'),
     path('paymentSuccess/', paymentSuccess, name='paymentSuccess'),
+    
+    
 ]
