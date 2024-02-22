@@ -1,4 +1,3 @@
-
 from django.db import models
 
 class Patient(models.Model):
@@ -18,7 +17,7 @@ class Patient(models.Model):
     :param paymentPaid: A boolean indicating whether the payment has been made for the patient's bill.
     :type paymentPaid: bool
     """
-    name = models.CharField(max_length=100)   
+    name = models.CharField(max_length=100)
     patientId = models.CharField(max_length=10, primary_key=True)  # Changed from IntegerField to CharField
     GENDER_CHOICES = (
         ('M', 'Male'),
