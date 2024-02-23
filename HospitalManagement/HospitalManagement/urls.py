@@ -4,6 +4,6 @@ from django.urls import path,include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',include("App_AllocateBed.urls")),
+    path('allocate/',include("App_AllocateBed.urls")),
 ]
 
