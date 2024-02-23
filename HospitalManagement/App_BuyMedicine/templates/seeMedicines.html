@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>See Medicines</title>
+    <style>
+        /* Your CSS styles here */
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Medicines</h1>
+        <ul>
+            {% for medicine in medicines %}
+                <li>{{ medicine.name }} - Price: ${{ medicine.price }}</li>
+            {% endfor %}
+        </ul>
+        <p>Your medicines will be delivered soon.</p>
+    </div>
+</body>
+</html>
