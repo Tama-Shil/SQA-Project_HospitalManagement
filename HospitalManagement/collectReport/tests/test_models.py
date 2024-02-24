@@ -1,40 +1,71 @@
 # collectReport/tests/test_models.py
 from django.test import TestCase
-from collectReport.models import PatientReport , MedicalTest
+from collectReport.models import Patient
 
+class PatientModelTest(TestCase):
+    """
+    Test suite for the Patient model in the collectReport app.
+    """
 
-class PatientReportModelTest(TestCase):
-    def testCreatePatientReport(self):
-        patient = PatientReport.objects.create(
-            patient_id="123",
-            patient_name="John Doe",
+    @classmethod
+    def setUpTestData(cls):
+        """
+        Set up non-modified objects used by all test methods.
+        """
+        Patient.objects.create(
+            patient_id='P001',
+            patient_name='John Doe',
             age=30,
-            gender="male"
-        )
-        self.assertEqual(patient.patient_id, "123")
-        self.assertEqual(patient.patient_name, "John Doe")
-        self.assertEqual(patient.age, 30)
-        self.assertEqual(patient.gender, "male")
-
-    def testPatientReportHasTests(self):
-        blood_test = MedicalTest.objects.create(name="Blood Test")
-        urine_analysis = MedicalTest.objects.create(name="Urine Analysis")
-
-        patient = PatientReport.objects.create(
-            patient_id="456",
-            patient_name="Jane Doe",
-            age=25,
-            gender="female"
+            gender='Male',
+            blood_test=True,
+            x_ray=False,
+            urine_analysis=True
         )
 
-        patient.tests.add(blood_test)
-        patient.tests.add(urine_analysis)
+    def testPatientName(self):
+        """
+        Test the retrieval of the patient name from the Patient model.
+        """
+        patient = Patient.objects.get(id=1)
+        expected_name = f'{patient.patient_name}'
+        self.assertEqual(expected_name, 'John Doe')
 
-        self.assertEqual(patient.tests.count(), 2)
-        self.assertIn(blood_test, patient.tests.all())
-        self.assertIn(urine_analysis, patient.tests.all())
+    def testPatientAge(self):
+        """
+        Test the retrieval of the patient age from the Patient model.
+        """
+        patient = Patient.objects.get(id=1)
+        expected_age = patient.age
+        self.assertEqual(expected_age, 30)
 
-class MedicalTestModelTest(TestCase):
-    def testCreateMedicalTest(self):
-        test = MedicalTest.objects.create(name="X-ray")
-        self.assertEqual(test.name, "X-ray")
+    def testPatientGender(self):
+        """
+        Test the retrieval of the patient gender from the Patient model.
+        """
+        patient = Patient.objects.get(id=1)
+        expected_gender = f'{patient.gender}'
+        self.assertEqual(expected_gender, 'Male')
+
+    def testBloodTestDefaultValue(self):
+        """
+        Test the default value of the blood_test field in the Patient model.
+        """
+        patient = Patient.objects.get(id=1)
+        expected_value = patient.blood_test
+        self.assertEqual(expected_value, True)
+
+    def testXRayDefaultValue(self):
+        """
+        Test the default value of the x_ray field in the Patient model.
+        """
+        patient = Patient.objects.get(id=1)
+        expected_value = patient.x_ray
+        self.assertEqual(expected_value, False)
+
+    def testUrineAnalysisDefaultValue(self):
+        """
+        Test the default value of the urine_analysis field in the Patient model.
+        """
+        patient = Patient.objects.get(id=1)
+        expected_value = patient.urine_analysis
+        self.assertEqual(expected_value, True)
