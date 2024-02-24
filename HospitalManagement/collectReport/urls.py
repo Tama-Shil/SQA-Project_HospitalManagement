@@ -1,9 +1,8 @@
-from django.urls import path, include
-from django.contrib import admin
+# collectReport/urls.py
+from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('', views.submitReport, name='submitReport'), 
-    path('report/', views.submitReport, name='submitReport'),
-    # Add other URL patterns as needed
+    path('', views.collectReport, name='collectReport'),
+    path('reportNotFound/', views.reportNotFound, name='reportNotFound'),
 ]

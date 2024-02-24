@@ -1,16 +1,13 @@
 # collectReport/admin.py
 from django.contrib import admin
-from .models import PatientReport, MedicalTest
+from .models import Patient
 
-class MedicalTestAdmin(admin.ModelAdmin):
-    list_display = ['name']
+class PatientAdmin(admin.ModelAdmin):
+    """
+    Custom admin configuration for the Patient model.
+    """
 
-admin.site.register(MedicalTest, MedicalTestAdmin)
+    list_display = ('patient_id', 'patient_name', 'age', 'gender', 'blood_test', 'x_ray', 'urine_analysis')
+    search_fields = ['patient_id', 'patient_name']
 
-class PatientReportAdmin(admin.ModelAdmin):
-    list_display = ['patient_id', 'patient_name', 'age', 'gender', 'display_tests']
-
-    def display_tests(self, obj):
-        return ", ".join([test.name for test in obj.tests.all()])
-
-admin.site.register(PatientReport, PatientReportAdmin)
+admin.site.register(Patient, PatientAdmin)

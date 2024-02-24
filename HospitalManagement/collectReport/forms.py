@@ -1,8 +1,8 @@
 # collectReport/forms.py
 from django import forms
-from .models import PatientReport
+from .models import Patient
 
-class PatientReportForm(forms.ModelForm):
+class Report(forms.ModelForm):
     class Meta:
-        model = PatientReport
-        fields = ['patient_id', 'patient_name', 'age', 'gender', 'tests']
+        model = Patient
+        fields = ['patient_id', 'patient_name', 'age', 'gender', 'blood_test', 'x_ray', 'urine_analysis']
