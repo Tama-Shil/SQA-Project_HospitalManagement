@@ -66,8 +66,8 @@
 </head>
 <body>
 
-        <form action="/submit_report" method="post">
-            <h2>Collect Report</h2>
+    <form action="{% url 'reportNotFound' %}">  
+        <h2>Collect Report</h2>
             <label for="patientId">Patient ID:</label>
             <input type="text" id="patientId" name="patientId" required>
 
@@ -97,7 +97,7 @@
                 <input type="checkbox" id="urineAnalysis" name="tests[]" value="urineAnalysis">
                 <label for="urineAnalysis">Urine Analysis</label>
             </div>
-
+            
             <button type="submit">Submit</button>
         </form>
    
