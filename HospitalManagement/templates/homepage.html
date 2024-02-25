@@ -122,9 +122,42 @@
             margin-bottom: 30px; /* Add some bottom margin for spacing */
         }
 
+        .alert {
+            padding: 15px;
+            margin: 10px auto;
+            width: 80%;
+            border-radius: 5px;
+        }
+        
+        .alert-success {
+            background-color: #4CAF50; /* Green */
+            color: white;
+        }
+        
+        .alert-warning {
+            background-color: #ff9800; /* Orange */
+            color: white;
+        }
+        
+        .alert-danger {
+            background-color: #f44336; /* Red */
+            color: white;
+        }
+
     </style>
 </head>
 <body>
+
+
+    {% for message in messages %}
+    <div class="alert alert-{{ message.tags }} alert-dismiddible fade show" role="alert">
+        <strong>Message:</strong> {{ message }}
+        <button type="button" data-dismiss="alert">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    {% endfor %}
+
     <header>
         <div class="container">
             <h1>Hospital Management System</h1>
@@ -134,8 +167,16 @@
                     <li><a href="#">Services</a></li>
                     <li><a href="#">About Us</a></li>
                     <li><a href="#">Contact</a></li>
-                    <li><a href="#">Login</a></li>
-                    <li><a href="#">Register</a></li>
+
+                    {% if user.is_authenticated %}
+                     <li>
+                        <a href="/signout">Sign Out</a>
+                    </li>
+
+                    {% else %}
+                        <li><a href="/signup">Sign Up</a></li> 
+                        <li><a href="/signin">Sign In</a></li>
+                    {% endif %}
                 </ul>
             </nav>
         </div>
