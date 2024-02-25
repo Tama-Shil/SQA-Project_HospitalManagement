@@ -19,6 +19,7 @@ jobs:
 
     - name: Install dependencies
       run: |
+        cd HospitalManagement
         python -m pip install --upgrade pip
 
     - name: Run tests
