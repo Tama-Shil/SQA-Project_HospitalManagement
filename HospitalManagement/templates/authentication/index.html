@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Website</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #ffe0b2; /* Light orange background */
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #ff9800; /* Darker orange header */
+            color: #fff;
+            text-align: center;
+            padding: 1px;
+        }
+
+        section {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #ff5722; /* Orange button color */
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            margin: 5px;
+            transition: background-color 0.3s; /* Smooth transition effect */
+        }
+
+        button.signout {
+            background-color: #d84315; /* Darker orange color for signout button */
+        }
+
+        a {
+            color: white;
+            text-decoration: none;
+        }
+
+        button:hover {
+            background-color: #e64a19; /* Darker shade of orange on hover */
+        }
+        .alert {
+            padding: 15px;
+            margin: 10px auto;
+            width: 80%;
+            border-radius: 5px;
+        }
+        
+        .alert-success {
+            background-color: #4CAF50; /* Green */
+            color: white;
+        }
+        
+        .alert-warning {
+            background-color: #ff9800; /* Orange */
+            color: white;
+        }
+        
+        .alert-danger {
+            background-color: #f44336; /* Red */
+            color: white;
+        }
+        
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>My Website</h1>
+    </header>
+
+    {% for message in messages %}
+    <div class="alert alert-{{ message.tags }} alert-dismiddible fade show" role="alert">
+        <strong>Message:</strong> {{ message }}
+        <button type="button" data-dismiss="alert">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    {% endfor %}
+
+    {% if user.is_authenticated %}
+    <h3>Hello {{fname}}</h3>
+    <h4>You are successfully logged in</h4>
+    <button type="submit" class="signout"><a href="/signout">Sign Out</a></button>
+
+    {% else %}
+    <section>
+        <button type="submit"><a href="/signup">Sign Up</a></button>
+        <button type="submit"><a href="/signin">Sign In</a></button>
+    </section>
+    {% endif %}
+
+</body>
+</html>

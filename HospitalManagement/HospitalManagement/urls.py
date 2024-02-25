@@ -8,9 +8,9 @@ from django.contrib import admin
 from django.urls import path,include
 from . import views
 
-urlpatterns = [
+urlpatterns =[
     path('admin/', admin.site.urls),
-    path('',views.home, name='home'),
+    path('',include('auth_app.urls')),
     path('prescription/', include('PrescribePatient.urls')),
     path('conductMedicalTest/',include('ConductMedicalTest.urls'))   
 ]
