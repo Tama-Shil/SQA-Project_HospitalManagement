@@ -25,4 +25,5 @@ jobs:
       run: cd HospitalManagement
     - name: Run tests
       run: |
+        cd HospitalManagement
         python manage.py test
