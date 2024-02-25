@@ -77,6 +77,9 @@
             margin-bottom: 10px;
             color: #ff7f00; /* Orange color */
         }
+        .feature-item a {
+            text-decoration: none;
+        }
 
         .feature-item p {
             font-size: 16px;
@@ -129,6 +132,10 @@
             <div class="feature-item">
                 <h3>Call Ambulance</h3>
                 <p>Emergency ambulance services available 24/7 to transport patients safely to the hospital.</p>
+            </div>
+            <div class="feature-item">
+                <a href="{% url 'make_appointment' %}"><h3>Make Appointment</h3></a>
+                <p>Smoothly make appointments for the patients</p>
             </div>
             <div class="feature-item">
                 <h3>Prescribe Patient</h3>

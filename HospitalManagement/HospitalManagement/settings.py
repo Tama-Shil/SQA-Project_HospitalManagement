@@ -37,7 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'call_ambulance'
+    'call_ambulance',
+    'make_appointment'
 ]
 
 MIDDLEWARE = [
