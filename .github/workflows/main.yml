@@ -21,8 +21,6 @@ jobs:
       run: |
         cd HospitalManagement
         python -m pip install --upgrade pip
-    - name: Change working directory
-      run: cd HospitalManagement
     - name: Run tests
       run: |
         cd HospitalManagement
