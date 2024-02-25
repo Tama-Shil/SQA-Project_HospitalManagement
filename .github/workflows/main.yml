@@ -3,7 +3,7 @@ name: Django CI
 on:
   push:
     branches:
-      - tama
+      - tama   # Only trigger on pushes to the 'tama' branch
 
 jobs:
   build:
@@ -16,6 +16,15 @@ jobs:
       uses: actions/setup-python@v2
       with:
         python-version: '3.x'
+
+    - name: Check for requirements.txt file
+      run: |
+        if [ -f requirements.txt ]; then
+          echo "requirements.txt found"
+        else
+          echo "requirements.txt not found"
+          exit 1
+        fi
 
     - name: Install dependencies
       run: |
