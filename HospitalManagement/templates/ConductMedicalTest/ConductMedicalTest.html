@@ -3,84 +3,160 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Conduct Medical Test</title>
+    <title>Conduct Medical Tests</title>
     <style>
-        /* Internal CSS styles */
         body {
             font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
             margin: 0;
             padding: 0;
-            background-color: #f4f4f4;
         }
+
         .container {
+            width: 80%;
             max-width: 800px;
-            margin: 20px auto;
-            padding: 20px;
+            margin: 50px auto;
             background-color: #fff;
-            border-radius: 8px;
+            padding: 20px;
+            border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
+
         h1 {
-            color: #ff7f00; /* Orange color */
             text-align: center;
+            color: #ff7f00;
         }
-        form {
-            margin-top: 20px;
+
+        .section {
+            margin-bottom: 30px;
         }
-        label {
-            display: block;
-            margin-bottom: 8px;
+
+        .section-title {
+            font-size: 24px;
             font-weight: bold;
-            color: #333; /* Dark text color */
+            color: #333;
+            margin-bottom: 10px;
         }
-        input[type="checkbox"] {
-            margin-right: 5px;
+
+        .form-group {
+            margin-bottom: 20px;
         }
+
+        label {
+            font-weight: bold;
+            color: #333;
+        }
+
+        input[type="text"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+            font-size: 16px;
+            margin-top: 5px;
+        }
+
+        textarea {
+            resize: vertical;
+            height: 100px;
+        }
+
         button[type="submit"] {
-            padding: 10px 20px;
-            background-color: #ff7f00; /* Orange color */
+            background-color: #ff7f00;
             color: #fff;
+            padding: 10px 20px;
             border: none;
             border-radius: 5px;
             cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
         }
+
         button[type="submit"]:hover {
-            background-color: #ff9933; /* Lighter shade of orange on hover */
-        }
-        .error-message {
-            color: #ff0000;
-            margin-top: 10px;
-        }
-        .success-message {
-            color: #008000;
-            margin-top: 10px;
+            background-color: #ff9900;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Conduct Medical Test</h1>
-        <form method="post">
-            {% csrf_token %}
-            <!-- Display patient information -->
-            <label for="patient-info">Patient Information:</label>
-            <textarea id="patient-info" rows="4" cols="50" readonly>{{ patient_info }}</textarea>
-            <br>
 
-            <!-- Display available medical tests -->
-            <label>Select Medical Tests:</label>
-            {% for test in medical_tests %}
-                <input type="checkbox" name="medical_tests" value="{{ test.id }}">{{ test.name }}<br>
-            {% endfor %}
-            <br>
-            <button type="submit">Order Medical Tests</button>
+<div class="container">
+    <h1>Conduct Medical Tests</h1>
+    
+    <div class="section">
+        <div class="section-title">Patient Information</div>
+        <form action="/conductMedicalTest/" method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="patient_id">Patient ID:</label>
+                <input type="text" id="patient_id" name="patient_id" required>
+            </div>
+            <div class="form-group">
+                <label for="patient_name">Patient Name:</label>
+                <input type="text" id="patient_name" name="patient_name" required>
+            </div>
+            <div class="form-group">
+                <label for="patient_age">Patient Age:</label>
+                <input type="text" id="patient_age" name="patient_age">
+            </div>
+            <div class="form-group">
+                <label for="referred_doctor">Referred Doctor:</label>
+                <input type="text" id="referred_doctor" name="referred_doctor">
+            </div>
         </form>
-        {% if error_message %}
-            <p class="error-message">{{ error_message }}</p>
-        {% endif %}
-        {% if success_message %}
-            <p class="success-message">{{ success_message }}</p>
-        {% endif %}
     </div>
+    
+    <div class="section">
+        <div class="section-title">Test Information</div>
+        <form action="/conductMedicalTest/" method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                <label>Test Types:</label><br>
+                <input type="checkbox" id="blood_test" name="test_types" value="Blood Test ($50)">
+                <label for="blood_test">Blood Test ($50)</label><br>
+                
+                <input type="checkbox" id="urinalysis" name="test_types" value="Urinalysis ($40)">
+                <label for="urinalysis">Urinalysis ($40)</label><br>
+                
+                <input type="checkbox" id="x_ray" name="test_types" value="X-Ray ($100)">
+                <label for="x_ray">X-Ray ($100)</label><br>
+                
+                <input type="checkbox" id="mri" name="test_types" value="MRI ($200)">
+                <label for="mri">MRI ($200)</label><br>
+                
+                <input type="checkbox" id="ct_scan" name="test_types" value="CT Scan ($150)">
+                <label for="ct_scan">CT Scan ($150)</label><br>
+                
+                <input type="checkbox" id="ultrasound" name="test_types" value="Ultrasound ($80)">
+                <label for="ultrasound">Ultrasound ($80)</label><br>
+                
+                <input type="checkbox" id="ecg" name="test_types" value="ECG ($60)">
+                <label for="ecg">ECG ($60)</label><br>
+                
+                <input type="checkbox" id="endoscopy" name="test_types" value="Endoscopy ($180)">
+                <label for="endoscopy">Endoscopy ($180)</label><br>
+                
+                <input type="checkbox" id="colonoscopy" name="test_types" value="Colonoscopy ($200)">
+                <label for="colonoscopy">Colonoscopy ($200)</label><br>
+                
+                <input type="checkbox" id="biopsy" name="test_types" value="Biopsy ($120)">
+                <label for="biopsy">Biopsy ($120)</label><br>
+                
+                <!-- Add more checkboxes for other test types -->
+            </div>
+            <div class="form-group">
+                <label for="test_notes">Notes:</label>
+                <textarea id="test_notes" name="test_notes" rows="4"></textarea>
+            </div>
+            <button type="submit">Conduct Tests</button>
+        </form>
+        
+    </div>
+    
+    <button type="submit">Conduct Test</button>
+</div>
+
 </body>
 </html>
