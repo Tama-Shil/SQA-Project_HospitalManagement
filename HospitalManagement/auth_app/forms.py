@@ -1,7 +1,7 @@
 from django import forms
-from .models import User
+from .models import Hospital_User
 
 class UserForm(forms.ModelForm):
     class Meta:
-        model = User
+        model = Hospital_User
         fields = ['username', 'first_name', 'last_name', 'email', 'password', 'address', 'cell_number', 'user_type']
