@@ -23,5 +23,6 @@ jobs:
         python -m pip install -r requirements.txt
     - name: Run tests
       run: |
+        source my_env/Scripts/activate
         cd HospitalManagement
         python manage.py test
