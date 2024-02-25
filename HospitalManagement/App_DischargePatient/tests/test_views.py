@@ -1,4 +1,3 @@
-# hospital_management_app/tests/test_views.py
 from django.test import RequestFactory
 from django.urls import reverse
 from App_DischargePatient.models import Patient
