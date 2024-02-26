@@ -2,11 +2,40 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Patient Not Found</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        h2 {
+            margin-top: 0;
+            color: #dc3545;
+        }
+        p {
+            margin: 10px 0;
+            color: #555;
+        }
+    </style>
 </head>
 <body>
+
+<div class="container">
     <h2>Error: Patient Not Found</h2>
     <p>The patient with the ID '{{ patient_id }}' was not found.</p>
     <p>Please ensure that the ID is correct and try again.</p>
+</div>
+
 </body>
 </html>

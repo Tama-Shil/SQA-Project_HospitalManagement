@@ -2,15 +2,47 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Patient Information</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        h2 {
+            margin-top: 0;
+            color: #007bff;
+        }
+        p {
+            margin: 10px 0;
+        }
+        .label {
+            font-weight: bold;
+            color: #555;
+        }
+    </style>
 </head>
 <body>
+
+<div class="container">
     <h2>Patient Information</h2>
-    <p>ID: {{ patient.patientId }}</p>
-    <p>Name: {{ patient.name }}</p>
-    <p>Gender: {{ patient.gender }}</p>
-    <p>Cabin No: {{ patient.cabin_no }}</p>
-    <p>Total Bill: {{ patient.total_bill }}</p>
-    <p>Payment Paid: {{ patient.payment_paid }}</p>
+    <p><span class="label">ID:</span> {{ patient.patientId }}</p>
+    <p><span class="label">Name:</span> {{ patient.name }}</p>
+    <p><span class="label">Gender:</span> {{ patient.gender }}</p>
+    <p><span class="label">Cabin No:</span> {{ patient.cabinNo }}</p>
+    <p><span class="label">Total Bill:</span> {{ patient.totalBill }}</p>
+    <p><span class="label">Payment Paid:</span> {{ patient.paymentPaid }}</p>
+</div>
+
 </body>
 </html>
