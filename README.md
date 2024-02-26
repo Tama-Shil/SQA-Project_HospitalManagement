@@ -53,9 +53,11 @@ cd HospitalManagement
 ```
 
 ### Run the Project
-Write the following command -
+Write the following commands -
 
 ```bash
+python manage.py makemigrations
+python manage.py migrate
 python manage.py runserver
 ```
 Click & Follow the link - ```http://127.0.0.1:8000/```
