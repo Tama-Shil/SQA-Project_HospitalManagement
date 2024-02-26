@@ -1,2 +1,2 @@
-django
+Django==3.2.12
 pytest
