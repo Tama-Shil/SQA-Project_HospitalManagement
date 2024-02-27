@@ -1,37 +1,56 @@
+"""
+Module: test_forms
+
+Description:
+This module contains test cases for the forms used in the ConductMedicalTest app.
+
+Classes:
+    - TestRecordFormTests: Test cases for the TestRecordForm form.
+"""
+
 from django.test import TestCase
-from forms import TestRecordForm
+from ..forms import TestRecordForm
 
 class TestRecordFormTests(TestCase):
+    """
+    Test cases for the TestRecordForm form.
+    """
     def test_valid_form(self):
+        """
+        Test if the form is valid with valid data.
+        """
         # Create a dictionary with valid form data
-        form_data = {
-            'patient_id': '123',
-            'patient_name': 'John Doe',
-            'patient_age': 30,
-            'referred_doctor': 'Dr. Smith',
-            'test_types': ['Blood Test ($50)', 'X-Ray ($100)'],
-            'test_notes': 'Patient complained of chest pain.'
+        formData = {
+            'patientId': '123',
+            'patientName': 'John Doe',
+            'patientAge': 30,
+            'referredDoctor': 'Dr. Smith',
+            'testTypes': ['Blood Test ($50)', 'X-Ray ($100)'],
+            'testNotes': 'Patient complained of chest pain.'
         }
 
         # Create a form instance with the valid data
-        form = TestRecordForm(data=form_data)
+        form = TestRecordForm(data=formData)
 
         # Check if the form is valid
         self.assertTrue(form.is_valid())
 
     def test_invalid_form(self):
+        """
+        Test if the form is invalid with invalid data.
+        """
         # Create a dictionary with invalid form data
-        form_data = {
-            'patient_id': '',  # Required field
-            'patient_name': 'John Doe',
-            'patient_age': 30,
-            'referred_doctor': 'Dr. Smith',
-            'test_types': [],  # At least one test type is required
-            'test_notes': 'Patient complained of chest pain.'
+        formData = {
+            'patientId': '',  # Required field
+            'patientName': 'John Doe',
+            'patientAge': 30,
+            'referredDoctor': 'Dr. Smith',
+            'testTypes': [],  # At least one test type is required
+            'testNotes': 'Patient complained of chest pain.'
         }
 
         # Create a form instance with the invalid data
-        form = TestRecordForm(data=form_data)
+        form = TestRecordForm(data=formData)
 
         # Check if the form is invalid
         self.assertFalse(form.is_valid())

@@ -1,11 +1,36 @@
+"""
+Module: medical_test_management
+
+Description:
+This module handles the management of medical tests in a hospital management system.
+It provides functionalities to conduct medical tests, save test records, and generate
+PDF reports containing test record information.
+
+Functions:
+    - generatePdf(data): Generates a PDF document containing the provided data.
+    - conductMedicalTest(request): Handles the conduct medical test form submission
+      and PDF generation.
+"""
+
+from io import BytesIO
 from django.http import HttpResponse
-from django.shortcuts import render, redirect
+from django.shortcuts import render
 from django.contrib import messages
 from .forms import TestRecordForm
 from reportlab.lib.pagesizes import letter
 from reportlab.platypus import SimpleDocTemplate, Table, TableStyle
+from reportlab.lib import colors  
 
-def generate_pdf(data):
+def generatePdf(data):
+    """
+    Generates a PDF document containing the provided data.
+
+    Args:
+        data (list): List of lists containing data to be displayed in the PDF.
+
+    Returns:
+        HttpResponse: HTTP response containing the generated PDF content.
+    """
     # Create a buffer for PDF content
     buffer = BytesIO()
 
@@ -43,6 +68,19 @@ def generate_pdf(data):
     return response
 
 def conductMedicalTest(request):
+    """
+    Handles the conduct medical test form submission and PDF generation.
+
+    If the form submission is valid, saves the test record and generates a PDF
+    containing the test record information. Otherwise, renders the conduct
+    medical test form.
+
+    Args:
+        request (HttpRequest): The request object.
+
+    Returns:
+        HttpResponse: Rendered HTML response or PDF download response.
+    """
     if request.method == 'POST':
         form = TestRecordForm(request.POST)
         if form.is_valid():
@@ -59,7 +97,7 @@ def conductMedicalTest(request):
                 ['Test Types', ', '.join(test_record.test_types)],
                 ['Notes', test_record.test_notes],
             ]
-            return generate_pdf(data)
+            return generatePdf(data)
     else:
         form = TestRecordForm()
 
