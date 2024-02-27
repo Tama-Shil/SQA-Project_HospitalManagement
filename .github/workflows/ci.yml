@@ -31,6 +31,6 @@ jobs:
     - name: Run Django commands
       run: |
         cd HospitalManagement
+        python manage.py makemigrations
         python manage.py migrate
         python manage.py test
-        # Add other Django commands as needed
